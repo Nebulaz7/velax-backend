@@ -12,5 +12,5 @@ RUN npm install
 COPY . .
 
 # Build the project (if needed) or just run the script
-# We use 'tsx' directly to run the indexer
-CMD ["npx", "tsx", "indexer.ts"]
+# Use npm script so tsx is preinstalled from devDependencies
+CMD ["npm", "start"]

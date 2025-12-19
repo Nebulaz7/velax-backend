@@ -6,9 +6,13 @@ import { config } from "dotenv";
 config();
 
 // --- CONFIG ---
-const SUPABASE_URL = process.env.SUPABASE_URL;
-const SUPABASE_SERVICE_KEY = process.env.SUPABASE_SERVICE_KEY;
-const PACKAGE_ID = process.env.PACKAGE_ID;
+const SUPABASE_URL =
+  process.env.SUPABASE_URL || process.env.NEXT_PUBLIC_SUPABASE_URL;
+const SUPABASE_SERVICE_KEY =
+  process.env.SUPABASE_SERVICE_KEY ||
+  process.env.SUPABASE_SERVICE_ROLE_KEY ||
+  process.env.SUPABASE_KEY;
+const PACKAGE_ID = process.env.PACKAGE_ID || process.env.SUI_PACKAGE_ID;
 
 // Validate required environment variables
 if (!SUPABASE_URL || !SUPABASE_SERVICE_KEY || !PACKAGE_ID) {
