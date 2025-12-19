@@ -1,5 +1,5 @@
 # Use lightweight Node image
-FROM node:18-alpine
+FROM node:20-alpine
 
 # Create app directory
 WORKDIR /app
@@ -10,6 +10,9 @@ RUN npm install
 
 # Copy source code
 COPY . .
+
+# Copy environment variables
+COPY .env .
 
 # Build the project (if needed) or just run the script
 # We use 'tsx' directly to run the indexer
