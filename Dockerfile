@@ -11,9 +11,6 @@ RUN npm install
 # Copy source code
 COPY . .
 
-# Copy environment variables
-COPY .env .
-
 # Build the project (if needed) or just run the script
 # We use 'tsx' directly to run the indexer
 CMD ["npx", "tsx", "indexer.ts"]
