@@ -13,4 +13,4 @@ COPY . .
 
 # Build the project (if needed) or just run the script
 # We use 'tsx' directly to run the indexer
-CMD ["npx", "tsx", "scripts/indexer.ts"]
+CMD ["npx", "tsx", "indexer.ts"]
