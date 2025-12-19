@@ -6,9 +6,23 @@ import { config } from "dotenv";
 config();
 
 // --- CONFIG ---
-const SUPABASE_URL = process.env.SUPABASE_URL!;
-const SUPABASE_SERVICE_KEY = process.env.SUPABASE_SERVICE_KEY!;
-const PACKAGE_ID = process.env.PACKAGE_ID!;
+const SUPABASE_URL = process.env.SUPABASE_URL;
+const SUPABASE_SERVICE_KEY = process.env.SUPABASE_SERVICE_KEY;
+const PACKAGE_ID = process.env.PACKAGE_ID;
+
+// Validate required environment variables
+if (!SUPABASE_URL || !SUPABASE_SERVICE_KEY || !PACKAGE_ID) {
+  console.error("❌ Missing required environment variables:");
+  console.error(`   SUPABASE_URL: ${SUPABASE_URL ? "✅" : "❌ MISSING"}`);
+  console.error(
+    `   SUPABASE_SERVICE_KEY: ${SUPABASE_SERVICE_KEY ? "✅" : "❌ MISSING"}`
+  );
+  console.error(`   PACKAGE_ID: ${PACKAGE_ID ? "✅" : "❌ MISSING"}`);
+  console.error(
+    "\n💡 In Railway, add these in the Variables tab of your service."
+  );
+  process.exit(1);
+}
 
 const client = new SuiClient({ url: "https://fullnode.testnet.sui.io:443" });
 const supabase = createClient(SUPABASE_URL, SUPABASE_SERVICE_KEY);
